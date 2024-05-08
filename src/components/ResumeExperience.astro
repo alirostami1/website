@@ -1,0 +1,90 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+
+interface Props {
+    company: string;
+    location: string;
+    title: string;
+    beginDate: Date;
+    endDate: Date;
+}
+
+const dateFormat = "MMM YYYY";
+
+const { title, beginDate, endDate, company, location } = Astro.props;
+---
+
+<div class="experience">
+    <div class="title">
+        <h4 class="company">{company}</h4>
+        <p class="date">
+            <FormattedDate date={beginDate} format={dateFormat} /> - <FormattedDate
+                date={endDate}
+                format={dateFormat}
+            />
+        </p>
+    </div>
+    <div class="position">
+        <p class="title">{title}</p>
+        <p class="location">{location}</p>
+    </div>
+</div>
+<style>
+    .title {
+        margin-bottom: 0em;
+        padding-bottom: 0em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    @media screen and (max-width: 850px) {
+        .title {
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: start;
+        }
+    }
+    .company {
+        margin-top: 0em;
+        padding-top: 0em;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0em;
+        font-size: 1.4em;
+        max-width: 40rem;
+    }
+    .location {
+        margin-top: 0em;
+        padding-top: 0em;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0em;
+    }
+    .position {
+        margin-bottom: 0em;
+        padding-bottom: 0em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .date {
+        margin-top: 0em;
+        padding-top: 0em;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0em;
+        /* min-width: 5rem; */
+        text-wrap: nowrap;
+    }
+    .experience {
+        padding: 1.5em;
+        border-bottom: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #16213e;
+    }
+    .title {
+        margin-top: 0em;
+        padding-top: 0em;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0em;
+    }
+</style>

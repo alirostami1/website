@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/BlogPost.astro";
+import Experience from "../components/ResumeExperience.astro";
+---
+
+<Layout
+    title="Ali Rostami's Resume"
+    description="Ali Rostami's Resume"
+    pubDate={new Date("May 07 2024")}
+>
+    <Experience
+        company="Eco Waste Management Solutions"
+        location="Mashhad, Iran"
+        title="Software Engineer"
+        beginDate={new Date("November 22 2022")}
+        endDate={new Date("Feburary 20 2024")}
+    />
+    <Experience
+        company="Project Management Website for IESEG school of management"
+        location="Lille, France"
+        title="Software Engineer"
+        beginDate={new Date("January 08 2022")}
+        endDate={new Date("October 08 2022")}
+    />
+</Layout>

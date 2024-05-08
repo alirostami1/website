@@ -1,0 +1,19 @@
+---
+import dayjs from "dayjs";
+
+interface Props {
+    date: Date;
+
+    // dayjs format guide: https://day.js.org/docs/en/display/format
+    // default format: YYYY-MM-DD
+    format?: string;
+}
+
+const { date, format = "YYYY-MM-DD" } = Astro.props;
+
+const formattedDate = dayjs(date).format(format);
+---
+
+<time datetime={date.toISOString()}>
+    {formattedDate}
+</time>

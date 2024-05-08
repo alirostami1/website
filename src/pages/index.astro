@@ -1,0 +1,41 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <div class="info">
+                <h2>Ali Rostami</h2>
+                <p>Software Engineer / Tech Writer / Gamer</p>
+            </div>
+            <div class="hero-image">
+                <img src="/me.png" alt="me" height="300" width="300" />
+            </div>
+        </main>
+        <Footer />
+        <style>
+            main {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            .info {
+                text-align: center;
+                padding: 1em;
+            }
+            .hero-image {
+                padding: 1em;
+            }
+        </style>
+    </body>
+</html>
