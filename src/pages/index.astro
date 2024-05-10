@@ -13,31 +13,39 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <body>
         <Header />
         <main>
-            <div class="info">
-                <h2>Ali Rostami</h2>
-                <p>Software Engineer / Tech Writer / Gamer</p>
+            <div class="card">
+                <div class="info">
+                    <h2>Ali Rostami</h2>
+                    <p>Software Engineer / Tech Writer / Gamer</p>
+                </div>
+                <div class="hero-image">
+                    <img src="/me.webp" alt="me" height="300" width="300" />
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="/me.webp" alt="me" height="300" width="300" />
-            </div>
+            <p>
+                You can find me on <a href="https://github.com/alirostami1"
+                    >GitHub</a
+                > and
+                <a href="https://www.linkedin.com/in/alirostami1/">LinkedIn</a>
+            </p>
         </main>
         <Footer />
         <style>
             main {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
                 min-height: calc(100vh - 26rem);
             }
+            .card {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
             @media screen and (max-width: 720px) {
-                main {
+                .card {
                     min-height: calc(100vh - 18rem);
                 }
             }
             .info {
                 text-align: center;
-                padding: 1em;
             }
             .hero-image {
                 padding: 1em;
