@@ -2,7 +2,6 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "../styles/global.css";
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
     title: string;
@@ -19,6 +18,7 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/png" href="favicon.ico" />
+<link rel="sitemap" href="/sitemap-index.xml" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
@@ -66,5 +66,3 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     title="Ali Rostmai's Blog"
     href={`${Astro.site}feed.xml`}
 />
-
-<ViewTransitions />
