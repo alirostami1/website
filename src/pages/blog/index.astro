@@ -21,23 +21,36 @@ const posts = (await getCollection("blog")).sort(
         <Header />
         <main>
             <section>
-                <a class="rss" href="/feed.xml" title="RSS Feed">
-                    <Icon class="rss-icon" name="rss" />
-                </a>
+                <div>
+                    <h2>
+                        Blog
+                        <a class="rss-link" href="/feed.xml" title="RSS Feed">
+                            <Icon name="mdi:rss" />
+                        </a>
+                    </h2>
+                </div>
+                <hr />
                 <ul>
                     {
-                        posts.sort((p1, p2) => p2.data.pubDate.getTime()- p1.data.pubDate.getTime()).map((post) => (
-                            <li>
-                                <a href={`/blog/${post.slug}/`}>
-                                    <h4 class="title">{post.data.title}</h4>
-                                    <p class="date">
-                                        <FormattedDate
-                                            date={post.data.pubDate}
-                                        />
-                                    </p>
-                                </a>
-                            </li>
-                        ))
+                        posts
+                            .sort(
+                                (p1, p2) =>
+                                    p2.data.pubDate.getTime() -
+                                    p1.data.pubDate.getTime(),
+                            )
+                            .map((post) => (
+                                <li>
+                                    <a href={`/blog/${post.slug}/`}>
+                                        <h4 class="title">{post.data.title}</h4>
+                                        <p class="date">
+                                            <FormattedDate
+                                                format="MMMM YYYY"
+                                                date={post.data.pubDate}
+                                            />
+                                        </p>
+                                    </a>
+                                </li>
+                            ))
                     }
                 </ul>
             </section>
@@ -45,28 +58,28 @@ const posts = (await getCollection("blog")).sort(
         <Footer />
         <style>
             main {
-                width: 960px;
+                width: 720px;
             }
             section {
                 min-height: calc(100vh - 26rem);
             }
             @media screen and (max-width: 720px) {
-                section  {
-                min-height: calc(100vh - 18rem);
+                section {
+                    min-height: calc(100vh - 18rem);
                 }
             }
             ul {
                 display: flex;
                 flex-flow: column;
-                gap: 1rem;
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
             }
             ul li {
-                padding: 1rem;
                 border-radius: 5px;
-                background-color: #16213E;
+            }
+            ul li:hover {
+                background-color: #0d0d0d;
             }
             ul li * {
                 text-decoration: none;
@@ -74,6 +87,7 @@ const posts = (await getCollection("blog")).sort(
             }
             ul li a {
                 display: block;
+                padding: 1rem;
             }
             .title {
                 margin: 0;
@@ -83,10 +97,20 @@ const posts = (await getCollection("blog")).sort(
             .date {
                 margin: 0;
                 color: white;
-            
-            ul li a:hover .title,
-            ul li a:hover .date {
-                color: #E94560;
+                font-size: 0.8em;
+            }
+
+            .rss-link {
+                display: inline-block;
+                color: white;
+                text-decoration: none;
+                font-size: 1em;
+                vertical-align: middle;
+            }
+
+            [data-icon="mdi:rss"] {
+                color: red;
+                fill: red;
             }
             @media (max-width: 720px) {
                 ul {
@@ -94,7 +118,6 @@ const posts = (await getCollection("blog")).sort(
                 }
                 ul li {
                     width: 100%;
-                    text-align: center;
                 }
                 ul li:first-child {
                     margin-bottom: 0;
@@ -102,9 +125,6 @@ const posts = (await getCollection("blog")).sort(
                 ul li:first-child .title {
                     font-size: 1.563em;
                 }
-            }
-            .rss {
-                margin: 2rem .5rem;
             }
         </style>
     </body>

@@ -1,25 +1,36 @@
 ---
-import Layout from "../layouts/BlogPost.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Experience from "../components/ResumeExperience.astro";
 ---
 
-<Layout
-    title="Ali Rostami's Resume"
-    description="Here is a list of companies I have worked at, and the roles I have held."
-    pubDate={new Date("May 07 2024")}
->
-    <Experience
-        company="Eco Waste Management Solutions"
-        location="Mashhad, Iran"
-        title="Software Engineer"
-        beginDate={new Date("November 22 2022")}
-        endDate={new Date("Feburary 20 2024")}
-    />
-    <Experience
-        company="Project Management Website for IESEG school of management"
-        location="Lille, France"
-        title="Software Engineer"
-        beginDate={new Date("January 08 2022")}
-        endDate={new Date("October 08 2022")}
-    />
-</Layout>
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+</head>
+<body>
+    <Header />
+    <main>
+        <section>
+            <h2>Resume</h2>
+            <hr />
+
+            <Experience
+                company="Eco Waste Management Solutions"
+                location="Mashhad, Iran"
+                title="Software Engineer"
+                beginDate={new Date("November 22 2022")}
+                endDate={new Date("Feburary 20 2024")}
+            />
+            <Experience
+                company="Project Management Website for IESEG school of management"
+                location="Lille, France"
+                title="Software Engineer"
+                beginDate={new Date("January 08 2022")}
+                endDate={new Date("October 08 2022")}
+            />
+        </section>
+    </main>
+    <Footer />
+</body>

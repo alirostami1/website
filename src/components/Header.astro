@@ -14,26 +14,19 @@ import HeaderLink from "./HeaderLink.astro";
 <style>
     header {
         margin: 0;
-        padding: 0 1em;
-        background-color: #16213e;
+        background-color: black;
         box-shadow: 0 2px 8px rgba(var(--black), 5%);
     }
-    h2 {
-        margin: 0;
-        font-size: 1em;
-    }
-
-    h2 a,
-    h2 a.active {
-        text-decoration: none;
-    }
     nav {
+        margin: auto;
+        margin-top: 1rem;
+        max-width: 720px;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
     nav a {
-        padding: 1em 0.5em;
+        padding: 0.5em 0.5em;
         color: white;
         border-bottom: 4px solid transparent;
         text-decoration: none;
@@ -49,6 +42,10 @@ import HeaderLink from "./HeaderLink.astro";
     @media (max-width: 720px) {
         .social-links {
             display: none;
+        }
+        nav {
+            flex-direction: column;
+            gap: 1;
         }
     }
 </style>
