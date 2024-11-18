@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Experience from "../components/ResumeExperience.astro";
+import Section from "../components/ResumeSection.astro";
 ---
 
 <head>
@@ -13,9 +14,9 @@ import Experience from "../components/ResumeExperience.astro";
     <Header />
     <main>
         <section>
-            <h2>Resume</h2>
-            <hr />
+            <h1>Resume</h1>
 
+            <Section title="Experience" />
             <Experience
                 company="Eco Waste Management Solutions"
                 location="Mashhad, Iran"
@@ -29,6 +30,22 @@ import Experience from "../components/ResumeExperience.astro";
                 title="Software Engineer"
                 beginDate={new Date("January 08 2022")}
                 endDate={new Date("October 08 2022")}
+            />
+
+            <Section title="Education" />
+            <Experience
+                company="Friedrich Alexander University Erlangen-Nuremberg"
+                location="Erlangen, Germany"
+                title="M.Sc. Computational Engineering"
+                beginDate={new Date("October 01 2024")}
+                endDate={new Date("September 30 2026")}
+            />
+            <Experience
+                company="Islamic Azad University"
+                location="Mashhad, Iran"
+                title="Bachelor in Computer Engineering"
+                beginDate={new Date("October 01 2019")}
+                endDate={new Date("September 30 2023")}
             />
         </section>
     </main>
