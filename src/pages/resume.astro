@@ -5,6 +5,55 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Experience from "../components/ResumeExperience.astro";
 import Section from "../components/ResumeSection.astro";
+import Skill from "../components/ResumeSkill.astro";
+
+const skills = [
+    {
+        name: "Programming Languages",
+        items: [
+            "Go",
+            "Javascript",
+            "Typescript",
+            "Bash",
+            "C/C++",
+            "SQL",
+            "TeX",
+            "embedded C",
+        ],
+    },
+    {
+        name: "Technologies",
+        items: ["Git", "PostgreSQL", "MongoDB", "Redis", "AWS EC2", "AWS SES"],
+    },
+    {
+        name: "Frameworks",
+        items: ["Gin", "Chi", "Express.js", "Nest.js", "React.js", "Astro.js"],
+    },
+    {
+        name: "Software",
+        items: [
+            "Linux",
+            "Docker",
+            "Nginx",
+            "Temporal",
+            "Centrifugo",
+            "Kubernetes",
+        ],
+    },
+    {
+        name: "Languages",
+        items: ["English", "Farsi (Persian)"],
+    },
+    {
+        name: "Other",
+        items: [
+            "Time Management",
+            "Problem-solving",
+            "Documentation",
+            "Unit-testing",
+        ],
+    },
+];
 ---
 
 <head>
@@ -47,6 +96,9 @@ import Section from "../components/ResumeSection.astro";
                 beginDate={new Date("October 01 2019")}
                 endDate={new Date("September 30 2023")}
             />
+
+            <Section title="Skills" />
+            <Skill categories={skills} />
         </section>
     </main>
     <Footer />

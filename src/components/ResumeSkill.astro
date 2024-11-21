@@ -1,0 +1,31 @@
+---
+interface category {
+    name: string;
+    items: string[];
+}
+
+interface Props {
+    categories: category[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div>
+    <ul>
+        {
+            categories.map((category) => (
+                <li>
+                    <span class="title">{category.name}:</span>{" "}
+                    {category.items.join(", ")}
+                </li>
+            ))
+        }
+    </ul>
+</div>
+
+<style>
+    .title {
+        font-weight: bold;
+    }
+</style>
