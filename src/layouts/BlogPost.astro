@@ -100,6 +100,24 @@ const { title, description, pubDate, updatedDate } = Astro.props;
             h6 {
                 margin-top: 3rem;
             }
+
+            @media screen and (max-width: 720px) {
+                h1 {
+                    font-size: 1.9rem;
+                }
+                h2 {
+                    font-size: 1.6rem;
+                }
+                h3 {
+                    font-size: 1.3rem;
+                }
+                h4 {
+                    font-size: 1.1rem;
+                }
+                h5 {
+                    font-size: 1rem;
+                }
+            }
         </style>
     </body>
 </html>
