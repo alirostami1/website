@@ -233,7 +233,7 @@ int main() {
 
 ```
 
-**Expected Output:** `4000`
+**Expected Output:** `4000`\
 **Actual Output:** Well, mostly the expected output but running the program multiple times would give different outputs. This the output of 10 consecutive runs on my machine:
 
 ```
@@ -327,50 +327,6 @@ int main() {
 
 - `std::memory_order_release` ensures `data = 42` is visible before `flag = 1`.
 - `std::memory_order_acquire` ensures the reader waits until the write is complete.
-
-
-## Comparisons with Other Languages
-
-Every programming language has its own philosophy when it comes to memory management. C++ gives you complete control, but other languages like Rust and Go take different approaches—balancing safety, performance, and simplicity.
-### C++ vs. Rust
-
-Rust is like C++’s safety-conscious sibling. It keeps the power of low-level control but adds strict rules to avoid common pitfalls.
-
-|**Feature**|**C++**|**Rust**|
-|---|---|---|
-|**Memory Safety**|Relies on RAII, smart pointers, and discipline|Enforced at compile time with ownership rules|
-|**Manual Control**|Full control|Limited but safe control|
-|**Garbage Collection**|No|No|
-|**Concurrency**|Requires explicit synchronization|Enforces thread safety with ownership|
-
-**What Makes Rust Different?**
-
-- **Ownership Model**: Rust enforces single ownership of memory with strict rules at compile time, ensuring no dangling pointers or double frees.
-- **Borrow Checker**: Rust ensures that references (borrows) don’t outlive the original owner, avoiding undefined behavior.
-
-**Why Choose C++?**
-
-- C++ offers more flexibility when you need manual control, but this comes with the risk of memory bugs if you’re not careful.
-
-### C++ vs. Go
-
-Go is all about simplicity. It takes memory management off your plate entirely, focusing on developer productivity and ease of use.
-
-|**Feature**|**C++**|**Go**|
-|---|---|---|
-|**Memory Safety**|Relies on RAII, smart pointers, and discipline|Fully managed with garbage collection|
-|**Manual Control**|Full control|None|
-|**Garbage Collection**|No|Yes|
-|**Concurrency**|Threads, mutexes, atomics|Lightweight goroutines and channels|
-
-**What Makes Go Different?**
-
-- **Garbage Collection**: Go’s garbage collector automatically handles memory cleanup, so you never have to worry about `delete` or smart pointers.
-- **Concurrency**: Go’s goroutines make it incredibly easy to write concurrent programs compared to the more complex thread management in C++.
-
-**Why Choose C++?**
-
-- If performance is critical and you need to squeeze every bit of efficiency out of your system, C++ beats Go, which sacrifices some speed for simplicity.
 
 ## Conclusion
 
