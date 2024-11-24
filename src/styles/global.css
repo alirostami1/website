@@ -127,13 +127,15 @@ img {
 
 code {
     padding: 2px 5px;
-    background-color: #0F3460;
-    border-radius: 2px;
+    background-color: #0d0d0d;
+    border-radius: 8px;
 }
 
 pre {
     padding: 1.5em;
     border-radius: 8px;
+    background-color: #0d0d0d !important;
+    font-size: 0.7em;
 }
 
 pre>code {

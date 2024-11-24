@@ -7,7 +7,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate } = Astro.props;
 ---
 
 <html lang="en">
@@ -40,20 +40,11 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             </article>
         </main>
         <Footer />
-        <style>
+        <style is:global>
             main {
                 width: calc(100% - 2em);
                 max-width: 100%;
                 margin: 0;
-            }
-            .hero-image {
-                width: 100%;
-            }
-            .hero-image img {
-                display: block;
-                margin: 0 auto;
-                border-radius: 12px;
-                box-shadow: var(--box-shadow);
             }
             .prose {
                 width: 720px;
@@ -62,11 +53,15 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
                 padding: 1em;
                 color: white;
             }
+            .prose p {
+                margin-bottom: 1em;
+            }
             .title {
                 margin-bottom: 1em;
                 padding: 1em 0;
                 text-align: center;
                 line-height: 1;
+                font-size: 1.3rem;
             }
             .title h1 {
                 margin: 0 0 0.5em 0;
@@ -77,6 +72,33 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
             }
             .last-updated-on {
                 font-style: italic;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1em 0;
+            }
+            th {
+                text-align: left;
+                padding: 0.5em 1em;
+                border-bottom: 1px solid rgb(var(--gray));
+            }
+            td {
+                padding: 0.5em 1em;
+                border-bottom: 1px solid rgb(var(--gray));
+            }
+            hr {
+                border: none;
+                border-top: 1px solid rgb(var(--gray));
+                margin: 1em 0;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin-top: 3rem;
             }
         </style>
     </body>
