@@ -1,6 +1,6 @@
 ---
 title: "C++ Memory Models - How Modern C++ Manages Memory Safety"
-description: 'Explore how modern C++ ensures memory safety with smart techniques like RAII and smart pointers, and see how it compares to Rust and Go'
+description: 'Explore how modern C++ ensures memory safety with smart techniques like RAII and smart pointers'
 pubDate: 'Nov 24 2024'
 ---
 
