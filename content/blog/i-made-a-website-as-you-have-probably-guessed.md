@@ -1,7 +1,8 @@
 ---
-title: "I made a website, as you've probably guessed!"
+title: "I Made A Website As You've Probably Guessed"
 description: 'This is my first blog post!'
 pubDate: 'May 08 2024'
+keywords: []
 ---
 
 ## My First Blog Post

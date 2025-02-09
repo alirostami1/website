@@ -2,29 +2,11 @@
 const today = new Date();
 ---
 
-<footer>
-    &copy; {today.getFullYear()} Ali Rostami. All rights reserved.
+<footer
+    class="w-full max-w-2xl flex justify-center py-10 border-t-1 border-t-dark-ui-3 mt-10"
+>
+    <p>
+        &copy; {today.getFullYear()} Ali Rostami. All rights reserved.
+    </p>
     <div class="social-links"></div>
 </footer>
-
-<style>
-    footer {
-        padding: 2em 1em 6em 1em;
-        background: black;
-        color: rgb(var(--gray));
-        text-align: center;
-    }
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1em;
-        margin-top: 1em;
-    }
-    .social-links a {
-        text-decoration: none;
-        color: rgb(var(--gray));
-    }
-    .social-links a:hover {
-        color: rgb(var(--gray-dark));
-    }
-</style>

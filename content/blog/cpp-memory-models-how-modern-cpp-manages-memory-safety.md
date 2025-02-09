@@ -2,7 +2,10 @@
 title: "C++ Memory Models - How Modern C++ Manages Memory Safety"
 description: 'Explore how modern C++ ensures memory safety with smart techniques like RAII and smart pointers'
 pubDate: 'Nov 24 2024'
+keywords: ["c++", "cpp", "memory-management"]
 ---
+
+Disclaimer: I used ChatGPT to edit and refine the text of this article.
 
 C++ is a powerhouse of a language, offering developers unmatched control over memory and performance. But with great power comes great responsibility—issues like memory leaks, dangling pointers, and race conditions have long been the dark side of this flexibility. In fact, concerns over these vulnerabilities recently led the [US government to discourage the use of C++](https://www.cisa.gov/resources-tools/resources/product-security-bad-practices) in favor of safer alternatives.
 

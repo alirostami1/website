@@ -1,123 +1,24 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "./Layout.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate } = Astro.props;
+const { title, description, pubDate, keywords } = Astro.props;
 ---
 
-<html lang="en">
-    <head>
-        <BaseHead title={title} description={description} />
-    </head>
-
-    <body>
-        <Header />
-        <main>
-            <article>
-                <div class="prose">
-                    <div class="title">
-                        <div class="date">
-                            <FormattedDate date={pubDate} />
-                            {
-                                updatedDate && (
-                                    <div class="last-updated-on">
-                                        Last updated on{" "}
-                                        <FormattedDate date={updatedDate} />
-                                    </div>
-                                )
-                            }
-                        </div>
-                        <h1>{title}</h1>
-                        <hr />
-                    </div>
-                    <slot />
+<Layout title={title} description={description}>
+    <article>
+        <div class="prose">
+            <div class="title">
+                <div class="date">
+                    <FormattedDate date={pubDate} />
                 </div>
-            </article>
-        </main>
-        <Footer />
-        <style is:global>
-            main {
-                width: calc(100% - 2em);
-                max-width: 100%;
-                margin: 0;
-            }
-            .prose {
-                width: 720px;
-                max-width: calc(100% - 2em);
-                margin: auto;
-                padding: 1em;
-                color: white;
-            }
-            .prose p {
-                margin-bottom: 1em;
-            }
-            .title {
-                margin-bottom: 1em;
-                padding: 1em 0;
-                text-align: center;
-                line-height: 1;
-                font-size: 1.3rem;
-            }
-            .title h1 {
-                margin: 0 0 0.5em 0;
-            }
-            .date {
-                margin-bottom: 0.5em;
-                color: rgb(var(--gray));
-            }
-            .last-updated-on {
-                font-style: italic;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin: 1em 0;
-            }
-            th {
-                text-align: left;
-                padding: 0.5em 1em;
-                border-bottom: 1px solid rgb(var(--gray));
-            }
-            td {
-                padding: 0.5em 1em;
-                border-bottom: 1px solid rgb(var(--gray));
-            }
-            hr {
-                border: none;
-                border-top: 1px solid rgb(var(--gray));
-                margin: 1em 0;
-            }
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                margin-top: 3rem;
-            }
-
-            @media screen and (max-width: 720px) {
-                h1 {
-                    font-size: 1.9rem;
-                }
-                h2 {
-                    font-size: 1.6rem;
-                }
-                h3 {
-                    font-size: 1.3rem;
-                }
-                h4 {
-                    font-size: 1.1rem;
-                }
-                h5 {
-                    font-size: 1rem;
-                }
-            }
-        </style>
-    </body>
-</html>
+                <h1>{title}</h1>
+                <hr />
+            </div>
+            <slot />
+        </div>
+    </article>
+</Layout>

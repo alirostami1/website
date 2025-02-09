@@ -1,55 +1,20 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main>
-            <div class="card">
-                <div class="info">
-                    <h2>Ali Rostami</h2>
-                    <p>Software Engineer / Tech Writer / Gamer</p>
-                </div>
-                <div class="hero-image">
-                    <img src="/me.webp" alt="me" height="300" width="300" />
-                </div>
-            </div>
-            <p>
-                You can find me on <a href="https://github.com/alirostami1"
-                    >GitHub</a
-                > and
-                <a href="https://www.linkedin.com/in/alirostami1/">LinkedIn</a>
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <section class="grid grid-cols-2 grid-rows-1">
+        <div class="flex flex-col justify-center">
+            <h1 class="text-light-tx dark:text-dark-tx text-3xl sm:text-5xl">
+                Ali Rostami
+            </h1>
+            <p class="mt-1">
+                Software Developer &bull; Tech Writer &bull; Gamer
             </p>
-        </main>
-        <Footer />
-        <style>
-            main {
-                min-height: calc(100vh - 26rem);
-            }
-            .card {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-            }
-            @media screen and (max-width: 720px) {
-                .card {
-                    min-height: calc(100vh - 18rem);
-                }
-            }
-            .info {
-                text-align: center;
-            }
-            .hero-image {
-                padding: 1em;
-            }
-        </style>
-    </body>
-</html>
+        </div>
+        <div class="hero-image">
+            <img src="/me.webp" alt="me" height="300" width="300" />
+        </div>
+    </section>
+</Layout>

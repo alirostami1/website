@@ -2,51 +2,26 @@
 import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header>
-    <nav>
-        <div class="internal-links">
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/blog">Blog</HeaderLink>
-            <HeaderLink href="/resume">Resume</HeaderLink>
-            <HeaderLink href="/contact">Contact</HeaderLink>
+<header class="w-full px-5 py-10 text-lg max-w-2xl md:px-0">
+    <nav class="flex justify-between">
+        <div class="">
+            <HeaderLink class="text-light-tx dark:text-dark-tx" href="/"
+                >Ali Rostami</HeaderLink
+            >
+        </div>
+        <div class="flex gap-5">
+            <HeaderLink
+                class="hover:text-light-tx dark:hover:text-dark-tx"
+                href="/blog">Blog</HeaderLink
+            >
+            <HeaderLink
+                class="hover:text-light-tx dark:hover:text-dark-tx"
+                href="/about">About</HeaderLink
+            >
+            <!-- <HeaderLink -->
+            <!--     class="hover:text-light-tx dark:hover:text-dark-tx" -->
+            <!--     href="/now">Now</HeaderLink -->
+            <!-- > -->
         </div>
     </nav>
 </header>
-<style>
-    header {
-        margin: 0;
-        background-color: black;
-        box-shadow: 0 2px 8px rgba(var(--black), 5%);
-    }
-    nav {
-        margin: auto;
-        margin-top: 1rem;
-        max-width: 720px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    nav a {
-        padding: 0.5em 0.5em;
-        color: white;
-        border-bottom: 4px solid transparent;
-        text-decoration: none;
-    }
-    nav a.active {
-        text-decoration: none;
-        border-bottom-color: #e94560;
-    }
-    .social-links,
-    .social-links a {
-        display: flex;
-    }
-    @media (max-width: 720px) {
-        .social-links {
-            display: none;
-        }
-        nav {
-            flex-direction: column;
-            gap: 1;
-        }
-    }
-</style>

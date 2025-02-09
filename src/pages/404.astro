@@ -1,44 +1,13 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main>
-            <h1>Page not Found</h1>
-            <div>
-                You can go back to <a href="/">Home</a> now
-            </div>
-        </main>
-        <Footer />
-        <style>
-            main {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                min-height: calc(100vh - 26rem);
-            }
-            @media screen and (max-width: 720px) {
-                main {
-                    min-height: calc(100vh - 18rem);
-                }
-            }
-            .info {
-                text-align: center;
-                padding: 1em;
-            }
-            .hero-image {
-                padding: 1em;
-            }
-        </style>
-    </body>
-</html>
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+    <section class="h-[70svh] flex flex-col justify-center items-center">
+        <h1 class="text-xl">Page Not Found</h1>
+        <div>
+            You can go back to <a href="/" class="underline">Home</a> now.
+        </div>
+    </section></Layout
+>

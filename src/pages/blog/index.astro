@@ -1,131 +1,56 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
-import { Icon } from "astro-icon/components";
+import dayjs from "dayjs";
+import Layout from "../../layouts/Layout.astro";
+import siteName from "../../siteName";
+import { SITE_DESCRIPTION } from "../../consts";
 
 const posts = (await getCollection("blog")).sort(
     (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
 );
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main>
-            <section>
-                <div>
-                    <h2>
-                        Blog
-                        <a class="rss-link" href="/feed.xml" title="RSS Feed">
-                            <Icon name="mdi:rss" />
-                        </a>
-                    </h2>
-                </div>
-                <hr />
-                <ul>
-                    {
-                        posts
-                            .sort(
-                                (p1, p2) =>
-                                    p2.data.pubDate.getTime() -
-                                    p1.data.pubDate.getTime(),
-                            )
-                            .map((post) => (
-                                <li>
-                                    <a href={`/blog/${post.slug}/`}>
-                                        <h4 class="title">{post.data.title}</h4>
-                                        <p class="date">
-                                            <FormattedDate
-                                                format="MMMM YYYY"
-                                                date={post.data.pubDate}
-                                            />
-                                        </p>
-                                    </a>
-                                </li>
-                            ))
-                    }
-                </ul>
-            </section>
-        </main>
-        <Footer />
-        <style>
-            main {
-                width: 720px;
+<Layout title={siteName("Blog")} description={SITE_DESCRIPTION}>
+    <section class="w-full min-h-[68svh]">
+        <h1 class="text-light-tx dark:text-dark-tx text-5xl sm:text-5xl mb-15">
+            Blog
+        </h1>
+        <ul>
+            {
+                posts
+                    .sort(
+                        (p1, p2) =>
+                            p2.data.pubDate.getTime() -
+                            p1.data.pubDate.getTime(),
+                    )
+                    .map((post) => (
+                        <li class="list-disc list-inside py-1 sm:py-0">
+                            <time
+                                class="hidden text-md sm:inline"
+                                datetime={post.data.pubDate.toISOString()}
+                            >
+                                {dayjs(post.data.pubDate).format("YYYY-MM")}
+                            </time>
+                            <a
+                                class="underline inline text-md md:text-lg 
+                    sm:inline-block items-center gap-3 
+                    rounded-xs text-light-tx dark:text-dark-tx md:ml-2"
+                                href={`/blog/${post.id}/`}
+                            >
+                                {post.data.title}
+                            </a>
+                        </li>
+                    ))
             }
-            section {
-                min-height: calc(100vh - 26rem);
-            }
-            @media screen and (max-width: 720px) {
-                section {
-                    min-height: calc(100vh - 18rem);
-                }
-            }
-            ul {
-                display: flex;
-                flex-flow: column;
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            ul li {
-                border-radius: 5px;
-            }
-            ul li:hover {
-                background-color: #0d0d0d;
-            }
-            ul li * {
-                text-decoration: none;
-                transition: 0.2s ease;
-            }
-            ul li a {
-                display: block;
-                padding: 1rem;
-            }
-            .title {
-                margin: 0;
-                color: white;
-                line-height: 1;
-            }
-            .date {
-                margin: 0;
-                color: white;
-                font-size: 0.8em;
-            }
-
-            .rss-link {
-                display: inline-block;
-                color: white;
-                text-decoration: none;
-                font-size: 1em;
-                vertical-align: middle;
-            }
-
-            [data-icon="mdi:rss"] {
-                color: red;
-                fill: red;
-            }
-            @media (max-width: 720px) {
-                ul {
-                    gap: 0.5em;
-                }
-                ul li {
-                    width: 100%;
-                }
-                ul li:first-child {
-                    margin-bottom: 0;
-                }
-                ul li:first-child .title {
-                    font-size: 1.563em;
-                }
-            }
-        </style>
-    </body>
-</html>
+        </ul>
+        <p class="mt-10">
+            If you want to get notified of new blog posts you can subscribe to
+            the <a
+                class="underline"
+                href="/feed.xml"
+                target="_blank"
+                rel="noopener noreferrer">RSS Feed</a
+            >.
+        </p>
+    </section>
+</Layout>
