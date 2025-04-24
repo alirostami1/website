@@ -1,56 +1,79 @@
 ---
-import { getCollection } from "astro:content";
-import dayjs from "dayjs";
-import Layout from "../../layouts/Layout.astro";
-import siteName from "../../siteName";
-import { SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from 'astro:content';
+import dayjs from 'dayjs';
+import Layout from '../../layouts/Layout.astro';
+import siteName from '../../siteName';
+import { SITE_DESCRIPTION } from '../../consts';
 
-const posts = (await getCollection("blog")).sort(
-    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+const posts = (await getCollection('blog')).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+const sortedPosts = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<Layout title={siteName("Blog")} description={SITE_DESCRIPTION}>
-    <section class="w-full min-h-[68svh]">
-        <h1 class="text-light-tx dark:text-dark-tx text-5xl sm:text-5xl mb-15">
+<Layout title={siteName('Blog')} description={SITE_DESCRIPTION}>
+    <section class="min-h-[68svh] w-full">
+        <h1 class="text-light-tx dark:text-dark-tx mb-15 text-5xl sm:text-5xl">
             Blog
         </h1>
-        <ul>
+        <h2 class="text-light-tx dark:text-dark-tx mb-5 text-lg sm:text-xl">
+            Latest articles:
+        </h2>
+        <ul class="flex list-inside list-disc flex-col gap-2">
             {
-                posts
-                    .sort(
-                        (p1, p2) =>
-                            p2.data.pubDate.getTime() -
-                            p1.data.pubDate.getTime(),
-                    )
-                    .map((post) => (
-                        <li class="list-disc list-inside py-1 sm:py-0">
-                            <time
-                                class="hidden text-md sm:inline"
-                                datetime={post.data.pubDate.toISOString()}
-                            >
-                                {dayjs(post.data.pubDate).format("YYYY-MM")}
-                            </time>
-                            <a
-                                class="underline inline text-md md:text-lg 
-                    sm:inline-block items-center gap-3 
-                    rounded-xs text-light-tx dark:text-dark-tx md:ml-2"
-                                href={`/blog/${post.id}/`}
-                            >
-                                {post.data.title}
-                            </a>
-                        </li>
-                    ))
+                sortedPosts.slice(0, 2).map((post) => (
+                    <li class="flex list-item space-x-1 sm:py-0">
+                        <time
+                            class="text-md hidden sm:inline"
+                            datetime={post.data.pubDate.toISOString()}
+                        >
+                            {dayjs(post.data.pubDate).format('YYYY-MM')}
+                        </time>
+                        <a
+                            class="dark:text-dark-tx text-md text-light-tx min-w-0 flex-1 items-center text-pretty underline md:text-lg"
+                            href={`/blog/${post.id}/`}
+                        >
+                            {post.data.title}
+                        </a>
+                    </li>
+                ))
             }
         </ul>
-        <p class="mt-10">
-            If you want to get notified of new blog posts you can subscribe to
-            the <a
+        <p class="text-light-tx dark:text-dark-tx text-md mt-10 sm:text-lg">
+            Stay in the loop: subscribe to my
+            <a
                 class="underline"
                 href="/feed.xml"
                 target="_blank"
                 rel="noopener noreferrer">RSS Feed</a
-            >.
+            > for new posts as soon as they go live.
         </p>
+        <h2
+            class="text-light-tx dark:text-dark-tx mt-10 mb-5 text-lg sm:text-xl"
+        >
+            Archive:
+        </h2>
+        <ul class="mt-10 list-inside list-disc">
+            {
+                sortedPosts.slice(2).map((post) => (
+                    <li class="flex list-item space-x-1 sm:py-0">
+                        <time
+                            class="text-md hidden sm:inline"
+                            datetime={post.data.pubDate.toISOString()}
+                        >
+                            {dayjs(post.data.pubDate).format('YYYY-MM')}
+                        </time>
+                        <a
+                            class="text-md text-light-tx dark:text-dark-tx min-w-0 flex-1 items-center text-pretty underline md:text-lg"
+                            href={`/blog/${post.id}/`}
+                        >
+                            {post.data.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
     </section>
 </Layout>
