@@ -1,56 +1,56 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import Experience from "../components/ResumeExperience.astro";
-import Section from "../components/ResumeSection.astro";
-import Skill from "../components/ResumeSkill.astro";
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Experience from '../components/ResumeExperience.astro';
+import Section from '../components/ResumeSection.astro';
+import Skill from '../components/ResumeSkill.astro';
 
 const skills = [
     {
-        name: "Programming Languages",
+        name: 'Programming Languages',
         items: [
-            "Go",
-            "Javascript",
-            "Typescript",
-            "Bash",
-            "C/C++",
-            "SQL",
-            "TeX",
-            "embedded C",
+            'Go',
+            'Javascript',
+            'Typescript',
+            'Bash',
+            'C/C++',
+            'SQL',
+            'TeX',
+            'embedded C',
         ],
     },
     {
-        name: "Technologies",
-        items: ["Git", "PostgreSQL", "MongoDB", "Redis", "AWS EC2", "AWS SES"],
+        name: 'Technologies',
+        items: ['Git', 'PostgreSQL', 'MongoDB', 'Redis', 'AWS EC2', 'AWS SES'],
     },
     {
-        name: "Frameworks",
-        items: ["Gin", "Chi", "Express.js", "Nest.js", "React.js", "Astro.js"],
+        name: 'Frameworks',
+        items: ['Gin', 'Chi', 'Express.js', 'Nest.js', 'React.js', 'Astro.js'],
     },
     {
-        name: "Software",
+        name: 'Software',
         items: [
-            "Linux",
-            "Docker",
-            "Nginx",
-            "Temporal",
-            "Centrifugo",
-            "Kubernetes",
+            'Linux',
+            'Docker',
+            'Nginx',
+            'Temporal',
+            'Centrifugo',
+            'Kubernetes',
         ],
     },
     {
-        name: "Languages",
-        items: ["English", "Farsi (Persian)"],
+        name: 'Languages',
+        items: ['English', 'Farsi (Persian)'],
     },
     {
-        name: "Other",
+        name: 'Other',
         items: [
-            "Time Management",
-            "Problem-solving",
-            "Documentation",
-            "Unit-testing",
+            'Time Management',
+            'Problem-solving',
+            'Documentation',
+            'Unit-testing',
         ],
     },
 ];
@@ -70,15 +70,15 @@ const skills = [
                 company="Eco Waste Management Solutions"
                 location="Mashhad, Iran"
                 title="Software Engineer"
-                beginDate={new Date("November 22 2022")}
-                endDate={new Date("Feburary 20 2024")}
+                beginDate={new Date('November 22 2022')}
+                endDate={new Date('Feburary 20 2024')}
             />
             <Experience
                 company="Project Management Website for IESEG school of management"
                 location="Lille, France"
                 title="Software Engineer"
-                beginDate={new Date("January 08 2022")}
-                endDate={new Date("October 08 2022")}
+                beginDate={new Date('January 08 2022')}
+                endDate={new Date('October 08 2022')}
             />
 
             <Section title="Education" />
@@ -86,15 +86,15 @@ const skills = [
                 company="Friedrich Alexander University Erlangen-Nuremberg"
                 location="Erlangen, Germany"
                 title="M.Sc. Computational Engineering"
-                beginDate={new Date("October 01 2024")}
-                endDate={new Date("September 30 2026")}
+                beginDate={new Date('October 01 2024')}
+                endDate={new Date('September 30 2026')}
             />
             <Experience
                 company="Islamic Azad University"
                 location="Mashhad, Iran"
                 title="Bachelor in Computer Engineering"
-                beginDate={new Date("October 01 2019")}
-                endDate={new Date("September 30 2023")}
+                beginDate={new Date('October 01 2019')}
+                endDate={new Date('September 30 2023')}
             />
 
             <Section title="Skills" />

@@ -1,18 +1,18 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import FormattedDate from "../../components/FormattedDate.astro";
-import Prose from "../../components/Prose.astro";
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Prose from '../../components/Prose.astro';
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts = await getCollection('blog');
     // console.log(posts);
     return posts.map((post) => ({
         params: { slug: post.id },
         props: post,
     }));
 }
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 console.log(post.id);
@@ -24,7 +24,7 @@ const { title, description, pubDate, keywords } = post.data;
 <Layout title={title} description={description}>
     <article class="w-full">
         <div class="mb-10">
-            <h1 class="text-3xl sm:text-5xl dark:text-dark-tx">{title}</h1>
+            <h1 class="dark:text-dark-tx text-3xl sm:text-5xl">{title}</h1>
             <div class="text-md mt-6">
                 <FormattedDate format="MMMM D, YYYY" date={pubDate} />
             </div>
@@ -35,13 +35,10 @@ const { title, description, pubDate, keywords } = post.data;
         {
             keywords && keywords.length > 0 && (
                 <div class="mt-10">
-                    <h2 class="inline dark:text-dark-tx">Keywords:</h2>
-                    <ul class="inline-flex flex-wrap mt-7">
+                    <h2 class="dark:text-dark-tx inline">Keywords:</h2>
+                    <ul class="mt-7 inline-flex flex-wrap">
                         {keywords.map((keyword: string) => (
-                            <li
-                                class="text-light-tx dark:text-dark-tx
-                        px-1 py-1 mr-1 mb-2 rounded-md"
-                            >
+                            <li class="text-light-tx dark:text-dark-tx mr-1 mb-2 rounded-md px-1 py-1">
                                 <code>{keyword}</code>
                             </li>
                         ))}

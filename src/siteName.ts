@@ -1,5 +1,5 @@
-import { SITE_TITLE } from "./consts"
+import { SITE_TITLE } from './consts';
 
 export default function siteName(title: string): string {
-    return `${title} - ${SITE_TITLE}`
+    return `${title} - ${SITE_TITLE}`;
 }

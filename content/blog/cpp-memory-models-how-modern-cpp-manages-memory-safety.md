@@ -1,8 +1,8 @@
 ---
-title: "C++ Memory Models - How Modern C++ Manages Memory Safety"
+title: 'C++ Memory Models - How Modern C++ Manages Memory Safety'
 description: 'Explore how modern C++ ensures memory safety with smart techniques like RAII and smart pointers'
 pubDate: 'Nov 24 2024'
-keywords: ["c++", "cpp", "memory-management"]
+keywords: ['c++', 'cpp', 'memory-management']
 ---
 
 Disclaimer: I used ChatGPT to edit and refine the text of this article.
@@ -22,7 +22,6 @@ The C++ memory model provides:
 - **Sequential Consistency**: A guarantee that operations appear to execute in the order they’re written—at least from the perspective of a single thread.
 - **Atomic Operations**: Safe, lock-free access to shared variables, which eliminates common data races.
 - **Memory Orderings**: Fine-grained control over how operations on memory are synchronized between threads.
-
 
 Why It Matters? Without a memory model, concurrent programs could behave unpredictably—different CPUs might reorder instructions, and some updates could "vanish" entirely. By defining clear rules, C++ ensures that developers have the tools to write safer and more predictable multi-threaded code.
 
@@ -45,7 +44,7 @@ void riskyFunction() {
     delete[] data;          // Frees memory
 
     // Uncommenting next line causes a double-delete crash!
-    // delete[] data;       
+    // delete[] data;
 }
 ```
 
@@ -284,13 +283,15 @@ int main() {
 The C++ memory model goes beyond atomicity and lets you fine-tune how operations are synchronized between threads using **[memory orderings](https://en.cppreference.com/w/cpp/atomic/memory_order)**.
 
 1. **`std::memory_order_relaxed`**
-    
+
     - Allows maximum performance but no guarantees about visibility between threads. Use it only when order doesn’t matter.
+
 2. **`std::memory_order_acquire` and `std::memory_order_release`**
-    
+
     - Ensure that reads and writes happen in a specific order.
+
 3. **`std::memory_order_seq_cst`** (default)
-    
+
     - Provides the strongest guarantees of sequential consistency.
 
 **Example: Using `std::memory_order`**

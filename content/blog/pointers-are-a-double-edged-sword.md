@@ -1,5 +1,5 @@
 ---
-title: "Pointers are a Double-Edged Sword"
+title: 'Pointers are a Double-Edged Sword'
 description: "Pointers are handy. They allow us to pass heavy objects around with little computational overhead. However, this assumption sometimes leads developers to design their program's data flow based on pointer types. But this is where things could go wrong."
 pubDate: 'May 17 2024'
 keywords: []
@@ -67,7 +67,7 @@ PASS
 ok      github.com/alirostami1/escape-analysis-exp/pointer_as_param     2.706s
 ```
 
-By running the benchmarks, we see that the version with the destination slice being passed down as an argument is ten times faster than the one that returns the destination slice back to the caller function. Odd! Isn't it? 
+By running the benchmarks, we see that the version with the destination slice being passed down as an argument is ten times faster than the one that returns the destination slice back to the caller function. Odd! Isn't it?
 
 This is happening because when returning a slice (which is a reference to an underlying array defined inside the function), the compiler is forced to store the array in the heap memory; otherwise, after the function returns and the function stack gets cleaned, the slice would be pointing to a position in the stack that isn't part of the stack anymore. It points to garbage data that could be overwritten by another function at any time!
 
@@ -75,7 +75,7 @@ This is happening because when returning a slice (which is a reference to an und
 
 ## Enters Heap
 
-Instead of storing the underlying array in stack memory, the Go compiler detects that it might be referenced outside the function, so it [escapes](https://en.wikipedia.org/wiki/Escape_analysis) the array from the stack memory to the heap memory. This means that any slice referencing the array is still valid even after the function returns. 
+Instead of storing the underlying array in stack memory, the Go compiler detects that it might be referenced outside the function, so it [escapes](https://en.wikipedia.org/wiki/Escape_analysis) the array from the stack memory to the heap memory. This means that any slice referencing the array is still valid even after the function returns.
 
 ![how complier escapes the local variable to heap memory so it can be referenced after the function returns](./escape-stack-heap2.svg)
 

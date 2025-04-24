@@ -16,8 +16,8 @@ const { categories } = Astro.props;
         {
             categories.map((category) => (
                 <li>
-                    <span class="title">{category.name}:</span>{" "}
-                    {category.items.join(", ")}
+                    <span class="title">{category.name}:</span>{' '}
+                    {category.items.join(', ')}
                 </li>
             ))
         }
