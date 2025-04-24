@@ -1,14 +1,14 @@
 ---
-title: "About Me"
-description: "Learn more about me, my background, and interests."
+title: 'About Me'
+description: 'Learn more about me, my background, and interests.'
 ---
+
 # About Me
 
-I am *Ali Rostami*. I am currently experimenting with different fields of computer science to find what interests me most. I already have professional experience in several areas, including front-end development, back-end development, and embedded systems development, which I worked on in my previous roles.
+Hello! I'm Ali Rostami. I was born in 2000 and now doing an M.Sc. in Computational Engineering at FAU. My love for computers started with video games. by fifteen I was writing C++ and wiring an Arduino‑based alarm.
 
-I am currently pursuing a master’s degree in Computational Engineering at [FAU](https://www.fau.eu/), where I am exploring computational methods and their applications in engineering.
+Since then I’ve moved from building React front ends to running back ends. I have been a key part of the team that carried-out the migration from a monolithic Node.js app to a fast Go microservices at my first job. I still enjoy Go every day, whether I’m tuning a web API or a tool CLI or Writing code in C and Go for Raspberry Pi projects. I live on Linux, code in Neovim, use Nix wherever I can, and keep CI pipelines humming with GitHub or GitLab Actions before shipping to AWS, Hetzner, or Cloudflare.
 
-I am passionate about learning and enjoy working on projects that combine creativity and technology. Lately, I’ve been focusing on parallel computing, numerical linear algebra, and game development.
+At university I am currently focusing on parallel computing and robotics, and after hours I tinker with game ideas.
 
-You can connect with me on [GitHub](https://github.com/alirostami1) and [LinkedIn](https://linkedin.com/in/alirostami1).
-
+Feel free to reach out to me on GitHub, LinkedIn, or by email at ali@rostami.me.
