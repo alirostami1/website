@@ -12,4 +12,10 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
     markdown: {},
+    redirects: {
+        '/github': 'https://github.com/alirostami1/',
+        '/github/[...slug]': 'https://github.com/alirostami1/[...slug]',
+        '/g/[...slug]': 'https://github.com/alirostami1/[...slug]',
+        '/linkedin': 'https://www.linkedin.com/in/alirostami1/',
+    },
 });
