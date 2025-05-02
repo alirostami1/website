@@ -3,6 +3,15 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import icon from 'astro-icon';
 import tailwindcss from '@tailwindcss/vite';
+import githubProjects from './github_projects.config';
+
+const githubProjectsRedirects = {};
+for (let gp of githubProjects) {
+    githubProjectsRedirects[`/github/${gp}`] =
+        `https://github.com/alirostami1/${gp}`;
+    githubProjectsRedirects[`/g/${gp}`] =
+        `https://github.com/alirostami1/${gp}`;
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,8 +23,7 @@ export default defineConfig({
     markdown: {},
     redirects: {
         '/github': 'https://github.com/alirostami1/',
-        '/github/[...slug]': 'https://github.com/alirostami1/[...slug]',
-        '/g/[...slug]': 'https://github.com/alirostami1/[...slug]',
         '/linkedin': 'https://www.linkedin.com/in/alirostami1/',
+        ...githubProjectsRedirects,
     },
 });
