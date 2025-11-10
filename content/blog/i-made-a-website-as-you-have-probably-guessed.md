@@ -13,6 +13,6 @@ written with Astro and it is hosted on Cloudflare Pages. You can checkout out
 the code (altough it's fairly simple) on
 [Github](https://github.com/alirostami1/website).
 
-There is Also an [RSS feed](https://alirostami.me/feed.xml) available.
+There is Also an [RSS feed](https://alirostami.net/feed.xml) available.
 
 Let's Go!

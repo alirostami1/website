@@ -25,4 +25,4 @@ automation and hardware related stuff.
 
 Feel free to checkout my [GitHub](https://github.com/alirostami1) and
 [LinkedIn](https://www.linkedin.com/in/alirostami1/) pages or contact me via
-email at [contact@alirostami.me](mailto:contact@alirostami.me).
+email at [contact@alirostami.net](mailto:contact@alirostami.net).
