@@ -9,8 +9,7 @@ description: View Ali Rostami's resume.
 
 ### Research Assistant — Friedrich Alexander University Erlangen-Nuremberg
 
-**Erlangen, Germany**
-**June 1, 2025 – Present**
+**Erlangen, Germany** **June 1, 2025 – Present**
 
 ### Software Engineer — Eco Waste Management Solutions
 
