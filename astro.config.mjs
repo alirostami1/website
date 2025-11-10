@@ -20,7 +20,14 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
     },
-    markdown: {},
+    markdown: {
+        shikiConfig: {
+            themes: {
+                light: 'github-light',
+                dark: 'github-dark',
+            },
+        },
+    },
     redirects: {
         '/github': 'https://github.com/alirostami1/',
         '/linkedin': 'https://www.linkedin.com/in/alirostami1/',
