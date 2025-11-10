@@ -11,7 +11,7 @@ explore neural networks using the MNIST dataset in modern C++. This project
 demonstrates memory-safe programming practices and leverages state-of-the-art
 C++ features. For an in-depth look at the underlying memory models and safety
 mechanisms, check out my
-[blog post on C++ memory models](https://alirostami.me/blog/cpp-memory-models-how-modern-cpp-manages-memory-safety/).
+[blog post on C++ memory models](https://alirostami.net/blog/cpp-memory-models-how-modern-cpp-manages-memory-safety/).
 
 The code for this project can be found on
 [Github](https://github.com/alirostami1/handwriting-recognition).

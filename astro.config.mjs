@@ -15,7 +15,7 @@ for (let gp of githubProjects) {
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://alirostami.me',
+    site: 'https://alirostami.net',
     integrations: [mdx(), sitemap(), icon()],
     vite: {
         plugins: [tailwindcss()],

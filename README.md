@@ -9,7 +9,7 @@ I used the amazing
 [Flexoki 2.0 Color Pallete](https://github.com/kepano/flexoki) and the design is
 also heavily inspired by [Steph Ango's Website](https://stephango.com/).
 
-The [alirostami.me](https://alirostami.me/) website is hosted on
+The [alirostami.net](https://alirostami.net/) website is hosted on
 [Cloudflare Pages](https://pages.cloudflare.com/).
 
 ## Running the Project
