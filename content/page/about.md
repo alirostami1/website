@@ -15,8 +15,8 @@ alarm system for my dad's garden.
 
 Since then I have experimented with many technologies and development stacks, I
 have built React websites and Node.js services. At my first job I was a key part
-of the team that carried-out the migration from a monolithic Node.js app to a
-distributed Go microservices. I developed some of the most sensetive services in
+of the team that carried-out the migration from a monolithic Node.js application
+to a distributed Go system. I developed some of the most sensetive services in
 that system such as financing, billing, payment, and driver routing.
 
 I still enjoy writing Go every day, whether I’m working on a web API or a CLI
