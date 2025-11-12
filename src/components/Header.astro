@@ -1,5 +1,9 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+const pages = [
+    { name: 'Blog', href: '/blog' },
+    { name: 'About', href: '/about' },
+];
 ---
 
 <header class="w-full max-w-2xl px-5 py-10 text-lg md:px-0">
@@ -10,18 +14,30 @@ import HeaderLink from './HeaderLink.astro';
             >
         </div>
         <div class="flex gap-5">
-            <HeaderLink
-                class="hover:text-light-tx dark:hover:text-dark-tx"
-                href="/blog">Blog</HeaderLink
-            >
-            <HeaderLink
-                class="hover:text-light-tx dark:hover:text-dark-tx"
-                href="/about">About</HeaderLink
-            >
-            <!-- <HeaderLink -->
-            <!--     class="hover:text-light-tx dark:hover:text-dark-tx" -->
-            <!--     href="/now">Now</HeaderLink -->
-            <!-- > -->
+            {
+                pages.map((page) => {
+                    if (Astro.url.pathname === page.href) {
+                        // Current page
+                        return (
+                            <HeaderLink
+                                class="text-light-tx dark:text-dark-tx"
+                                href={page.href}
+                            >
+                                {page.name}
+                            </HeaderLink>
+                        );
+                    } else {
+                        return (
+                            <HeaderLink
+                                class="hover:text-light-tx dark:hover:text-dark-tx"
+                                href={page.href}
+                            >
+                                {page.name}
+                            </HeaderLink>
+                        );
+                    }
+                })
+            }
         </div>
     </nav>
 </header>
