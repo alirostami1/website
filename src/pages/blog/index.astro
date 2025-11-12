@@ -16,7 +16,7 @@ const sortedPosts = posts.sort(
 <Layout title={siteName('Blog')} description={SITE_DESCRIPTION}>
     <section class="min-h-[68svh] w-full">
         <h1 class="text-light-tx dark:text-dark-tx mb-15 text-5xl sm:text-5xl">
-            Blog
+            Articles
         </h1>
         <h2 class="text-light-tx dark:text-dark-tx mb-5 text-lg sm:text-xl">
             Latest articles:
@@ -45,7 +45,7 @@ const sortedPosts = posts.sort(
             Stay in the loop: subscribe to my
             <a
                 class="underline"
-                href="/feed.xml"
+                href="/feed"
                 target="_blank"
                 rel="noopener noreferrer">RSS Feed</a
             > for new posts as soon as they go live.
@@ -53,7 +53,7 @@ const sortedPosts = posts.sort(
         <h2
             class="text-light-tx dark:text-dark-tx mt-10 mb-5 text-lg sm:text-xl"
         >
-            Archive:
+            Other articles:
         </h2>
         <ul class="mt-10 list-inside list-disc">
             {

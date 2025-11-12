@@ -21,6 +21,7 @@ const { Content } = await render(page);
 
 <Layout title={siteName(title)} description={description}>
     <article class="">
+        <h1 class="dark:text-dark-tx mb-10 text-3xl sm:text-5xl">{title}</h1>
         <Prose>
             <Content />
         </Prose>
