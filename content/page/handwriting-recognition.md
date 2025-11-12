@@ -4,8 +4,6 @@ description:
     'A modern C++ project for handwriting recognition using the MNIST dataset'
 ---
 
-# Handwriting Recognition in C++
-
 Welcome to the Handwriting Recognition project, an educational initiative to
 explore neural networks using the MNIST dataset in modern C++. This project
 demonstrates memory-safe programming practices and leverages state-of-the-art
