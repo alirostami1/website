@@ -7,92 +7,70 @@ pubDate: 'Nov 24 2024'
 keywords: ['c++', 'cpp', 'memory-management']
 ---
 
-Disclaimer: I used ChatGPT to edit and refine the text of this article.
-
-C++ is a powerhouse of a language, offering developers unmatched control over
-memory and performance. But with great power comes great responsibility—issues
-like memory leaks, dangling pointers, and race conditions have long been the
-dark side of this flexibility. In fact, concerns over these vulnerabilities
-recently led the
+C++ is a one of my favorite languages. It offers full control over memory and
+performance. But with great power comes great responsibility. Issues like memory
+leaks, dangling pointers, and race conditions is what caused the concerns over
+these vulnerabilities that recently led the
 [US government to discourage the use of C++](https://www.cisa.gov/resources-tools/resources/product-security-bad-practices)
 in favor of safer alternatives.
 
-The good news? Modern C++ has come a long way. With tools like smart pointers,
-RAII, and thread-safe primitives introduced in C++11 and beyond, managing memory
-is much safer than it used to be.
+But I don't think these claims are justified. Modern C++ has come a long way.
+With tools like smart pointers, RAII, and thread-safe primitives introduced in
+C++11 and later standards, managing memory is much safer than it used to be.
+Also the static analyzers would yell at you relentlessly if you try to do manual
+memory management.
 
-## What is the C++ Memory Model?
+## The C++ Memory Model
 
-Simply put, the C++ memory model defines the rules for how threads interact with
-memory, ensuring that operations like reading and writing data happen in a
-predictable way.
+The C++ memory model defines the rules for how threads interact with memory,
+ensuring that operations like reading and writing data happen in a predictable
+way.
 
-Before C++11, the language had no formal memory model. Developers often relied
-on platform-specific behavior, which made multi-threaded programming error-prone
-and hard to debug. C++11 changed the game by introducing a well-defined memory
-model, making it easier to write concurrent code without unexpected surprises.
+Before C++11, the language had no formal memory model. We had to often rely on
+compiler- and platform-specific implementatios, which made multi-threaded
+programming dangerous and hard to debug. C++11 changed this by introducing a
+well-defined memory model, making it easier to write concurrent code without
+surprises.
 
 The C++ memory model provides:
 
 - **Sequential Consistency**: A guarantee that operations appear to execute in
-  the order they’re written—at least from the perspective of a single thread.
+  the order they’re written. At least from the perspective of a single thread.
 - **Atomic Operations**: Safe, lock-free access to shared variables, which
   eliminates common data races.
 - **Memory Orderings**: Fine-grained control over how operations on memory are
   synchronized between threads.
 
-Why It Matters? Without a memory model, concurrent programs could behave
-unpredictably—different CPUs might reorder instructions, and some updates could
-"vanish" entirely. By defining clear rules, C++ ensures that developers have the
-tools to write safer and more predictable multi-threaded code.
+Without a memory model, concurrent programs could behave unpredictably.
+Different CPUs might reorder instructions.
 
 ## Memory Management Techniques in C++
 
-When it comes to managing memory, C++ gives you all the tools you need—along
-with plenty of ways to shoot yourself in the foot if you're not careful. From
-manual control with raw pointers to modern conveniences like smart pointers and
-STL containers, memory management in C++ has evolved to reduce the risk of
-common pitfalls.
+When it comes to managing memory, C++ has all the tools we need. Along with
+plenty of ways to shoot yourself in the foot if we're not careful. Going from
+manual control with raw pointers to smart pointers and STL containers, memory
+management in C++ has evolved to reduce the risk of common pitfalls.
 
 ### Manual Memory Management
 
-In the old days of C++, you’d allocate memory with `new` and free it with
+In the pre C++11 days, you’d allocate memory with `new` and free it with
 `delete`. While this gave developers complete control, it also introduced plenty
-of opportunities for mistakes.
+of opportunities for mistakes:
 
-Here’s an example of what _not_ to do:
+- **Memory Leaks**: Forget to call `delete`.
+- **Double Delete**: Call `delete` twice.
+- **Dangling Pointers**: Use a pointer after it’s been deleted.
 
-```cpp
-#include <iostream>
-
-void riskyFunction() {
-    int* data = new int[5]; // Allocates memory
-    data[0] = 42;           // Uses memory
-    delete[] data;          // Frees memory
-
-    // Uncommenting next line causes a double-delete crash!
-    // delete[] data;
-}
-```
-
-Problems with manual memory management:
-
-- **Memory Leaks**: Forget to call `delete`, and you’ll leak memory.
-- **Double Delete**: Call `delete` twice, and your program might crash.
-- **Dangling Pointers**: Use a pointer after it’s been deleted, and you’re in
-  undefined behavior land.
-
-Manual memory management is still useful in low-level code, but for most cases,
-modern C++ offers safer options.
+Manual memory management is still useful in low-level code where every byte of
+memory matters, but for most cases, modern C++ offers safer options.
 
 ### RAII (Resource Acquisition Is Initialization)
 
-[RAII](https://en.cppreference.com/w/cpp/language/raii) is a fancy way of
-saying, "Tie the lifetime of your resources (like memory) to the lifetime of an
-object." With RAII, you don’t need to worry about explicitly freeing
-resources—they’re automatically cleaned up when the object goes out of scope.
-
-Example using RAII:
+[RAII](https://en.cppreference.com/w/cpp/language/raii) is a confusiong way of
+saying, "Tie the lifetime of your resources (e.g. memory, file, network) to the
+lifetime of an object." With RAII, you don’t need to worry about explicitly
+freeing resources as they’re automatically cleaned up when the object goes out
+of scope.
 
 ```cpp
 #include <iostream>
@@ -134,21 +112,12 @@ void useResource() {
 }
 
 int main() {
-    useResource(); // Demonstrates the RAII principle in action
+    useResource();
     return 0;
 }
 ```
 
-Explanation:
-
-1. **Resource Acquisition**: The `Resource` class allocates memory in its
-   constructor, simulating acquiring a resource.
-2. **Automatic Cleanup**: The destructor ensures that the allocated memory is
-   released when the `Resource` object goes out of scope, avoiding memory leaks.
-3. **Encapsulation**: The resource (`data`) is encapsulated within the class,
-   and users don’t need to worry about explicitly freeing it.
-
-Output:
+The output of the above program:
 
 ```
 Resource acquired with value: 10
@@ -157,89 +126,47 @@ Resource value updated to: 20
 Resource released.
 ```
 
-Why it’s better:
-
-- No chance of forgetting `delete`.
-- Automatically prevents double-deletes and dangling pointers.
-
 ### Smart Pointers
 
 C++ introduced
 [smart pointers](https://www.geeksforgeeks.org/smart-pointers-cpp/) in C++11 to
-make memory management safer and easier. Here are the three main types:
+make memory management safer and convinient. There are three types:
 
-#### `std::unique_ptr`
+#### [`std::unique_ptr`](https://en.cppreference.com/w/cpp/memory/unique_ptr.html)
 
 - Ensures that only one object owns a given piece of memory.
 - Automatically deletes the memory when the `unique_ptr` goes out of scope.
 
-Example:
-
-```cpp
-auto ptr1 = std::make_shared<int>(42); // Shared ownership
-auto ptr2 = ptr1;                     // Now both share ownership
-std::cout << *ptr2 << std::endl;
-```
-
-#### `std::shared_ptr`
+#### [`std::shared_ptr`](https://en.cppreference.com/w/cpp/memory/shared_ptr.html)
 
 - Allows multiple objects to share ownership of a single piece of memory.
 - Memory is only freed when the last `shared_ptr` owning it is destroyed.
 
-Example:
-
-```cpp
-auto ptr1 = std::make_shared<int>(42); // Shared ownership
-auto ptr2 = ptr1;                     // Now both share ownership
-std::cout << *ptr2 << std::endl;
-```
-
-#### `std::weak_ptr`
+#### [`std::weak_ptr`](https://en.cppreference.com/w/cpp/memory/weak_ptr.html)
 
 - Works with `shared_ptr` to prevent circular references.
 - Doesn’t contribute to the ownership count, so it won’t block memory cleanup.
 
-Example:
-
-```cpp
-std::shared_ptr<int> shared = std::make_shared<int>(42);
-std::weak_ptr<int> weak = shared; // Weak reference
-if (auto locked = weak.lock()) {
-    std::cout << *locked << std::endl;
-}
-```
-
 ### STL Containers
 
-Containers like `std::vector`, `std::map`, and `std::string` manage memory for
-you, so you don’t need to worry about allocating or freeing memory. For most use
-cases, they’re the safest and most efficient choice.
-
-Example:
-
-```cpp
-#include <vector>
-#include <iostream>
-
-int main() {
-    std::vector<int> numbers = {1, 2, 3, 4, 5};
-    numbers.push_back(6); // Automatically resizes and allocates memory
-    for (int n : numbers) {
-        std::cout << n << " ";
-    }
-    return 0;
-}
-```
+Containers like
+[`std::vector`](https://en.cppreference.com/w/cpp/container/vector.html),
+[`std::array`](https://en.cppreference.com/w/cpp/container/array.html),
+[`std::map`](https://en.cppreference.com/w/cpp/container/map.html), and
+[`std::string`](https://en.cppreference.com/w/cpp/string/basic_string.html)
+manage their memory internally, so you don’t need to worry about allocating or
+freeing memory. For most use cases, they’re the safest and most efficient
+choice.
 
 ## Concurrency and Memory Safety
 
 As soon as you introduce multiple threads into a program, memory safety becomes
-a whole new ballgame. Without careful coordination, threads can overwrite each
-other’s changes, read stale data, or even crash your program. This is where the
-modern C++ memory model shines by providing tools to manage memory safely in
-multithreaded environments.
+a whole new problem. Threads can overwrite each other’s changes, read stale
+data, or even crash the program. This is where the modern C++ memory model comes
+into play by providing tools to manage memory safely in multithreaded
+environments.
 
-### The Problem: Data Races
+### Data Races
 
 A data race happens when:
 
@@ -280,8 +207,8 @@ int main() {
 
 **Expected Output:** `4000`\
 **Actual Output:** Well, mostly the expected output but running the program
-multiple times would give different outputs. This the output of 10 consecutive
-runs on my machine:
+multiple times would give different and occasionally wrong outputs. This the
+output of 10 consecutive runs on my machine:
 
 ```
 Counter value: 4000
@@ -296,11 +223,11 @@ Counter value: 4000
 Counter value: 4000
 ```
 
-### The Solution: `std::atomic`
+### One Possible Solution
 
-The `std::atomic` type ensures that operations on shared memory are performed
-atomically (as indivisible units). This eliminates data races without needing a
-lock.
+The [`std::atomic`](https://en.cppreference.com/w/cpp/atomic/atomic.html) type
+ensures that operations on shared memory are performed atomically (as
+indivisible units). This eliminates data races without needing a lock.
 
 Here’s how you fix the example above:
 
@@ -320,32 +247,21 @@ int main() {
 
 **Output:** `2000`
 
-**What Changed?**
+The `std::atomic<int>` type ensures that all operations on `counter` are atomic.
+This means threads cannot interrupt each other during an update.
 
-- The `std::atomic<int>` type ensures that all operations on `counter` are
-  atomic.
-- This means threads cannot interrupt each other during an update.
-
-### Memory Orderings
+### Another Approach Memory Orderings
 
 The C++ memory model goes beyond atomicity and lets you fine-tune how operations
 are synchronized between threads using
 **[memory orderings](https://en.cppreference.com/w/cpp/atomic/memory_order)**.
 
-1. **`std::memory_order_relaxed`**
-
-    - Allows maximum performance but no guarantees about visibility between
-      threads. Use it only when order doesn’t matter.
-
-2. **`std::memory_order_acquire` and `std::memory_order_release`**
-
-    - Ensure that reads and writes happen in a specific order.
-
-3. **`std::memory_order_seq_cst`** (default)
-
-    - Provides the strongest guarantees of sequential consistency.
-
-**Example: Using `std::memory_order`**
+1. **`std::memory_order_relaxed`**: Allows maximum performance but no guarantees
+   about visibility between threads.
+2. **`std::memory_order_acquire` and `std::memory_order_release`**: Ensure that
+   reads and writes happen in a specific order.
+3. **`std::memory_order_seq_cst`** (default): Provides the strongest guarantees
+   of sequential consistency.
 
 ```cpp
 #include <iostream>
@@ -378,16 +294,17 @@ int main() {
 }
 ```
 
-**Explanation**:
-
-- `std::memory_order_release` ensures `data = 42` is visible before `flag = 1`.
-- `std::memory_order_acquire` ensures the reader waits until the write is
-  complete.
+`std::memory_order_release` ensures `data = 42` is visible before `flag = 1`.
+`std::memory_order_acquire` ensures the reader waits until the write is
+complete.
 
 ## Conclusion
 
-C++ gives unmatched control and performance, but it takes care to use safely.
-Modern features like smart pointers and RAII make memory management easier, but
-languages like Rust, Go, and Python offer their own takes—Rust focuses on
-safety, Go on simplicity, and Python on ease of use. Choose the right tool for
-your project, and you’re set for success!
+C++ gives great control and performance to the developers, but it requires great
+level of attention too in order to use avoid various memory related issues.
+Modern features like smart pointers and RAII make memory management easier but
+it is up to the developers to use them. Languages like Rust, Go offer their own
+takes. Rust focuses on safety, Go on simplicity. Both offer ways to do unsafe
+code as well. It is a matter of which is the default and how easy it is to step
+into unsafe territory. Ultimately it is the developers responsibility to choose
+the right tool for their project.
