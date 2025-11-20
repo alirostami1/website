@@ -61,9 +61,10 @@ export async function GET(context: APIContext) {
 
     // Return our RSS feed XML response.
     return rss({
-        title: SITE_TITLE,
+        title: "Ali Rostami's Blog",
         description: SITE_DESCRIPTION,
         site: baseUrl,
+        stylesheet: "/rss/styles.xsl",
         items: feedItems,
     });
 }
