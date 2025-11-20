@@ -31,6 +31,7 @@ export default defineConfig({
     redirects: {
         '/github': 'https://github.com/alirostami1/',
         '/linkedin': 'https://www.linkedin.com/in/alirostami1/',
+        '/feed': 'https://alirostami.net/feed.xml',
         ...githubProjectsRedirects,
     },
 });
