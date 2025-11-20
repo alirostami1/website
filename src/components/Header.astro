@@ -4,6 +4,7 @@ const pages = [
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
 ];
+const { pathname } = Astro.url;
 ---
 
 <header class="w-full max-w-2xl px-5 py-10 text-lg md:px-0">
@@ -16,12 +17,13 @@ const pages = [
         <div class="flex gap-5">
             {
                 pages.map((page) => {
-                    if (Astro.url.pathname === page.href) {
+                    if (pathname.startsWith(page.href)) {
                         // Current page
                         return (
                             <HeaderLink
                                 class="text-light-tx dark:text-dark-tx"
                                 href={page.href}
+                                aria-current="page"
                             >
                                 {page.name}
                             </HeaderLink>

@@ -10,7 +10,7 @@ import { loadRenderers } from "astro:container";
 import { getCollection, render } from "astro:content";
 import { transform, walk } from "ultrahtml";
 import sanitize from "ultrahtml/transformers/sanitize";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { SITE_DESCRIPTION } from "../consts";
 
 export async function GET(context: APIContext) {
     // Get the URL to prepend to relative site links. Based on `site` in `astro.config.mjs`.
