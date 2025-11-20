@@ -60,5 +60,5 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
     rel="alternate"
     type="application/rss+xml"
     title="Ali Rostmai's Blog"
-    href={`${Astro.site}feed.xml`}
+    href={new URL('feed.xml', Astro.site)}
 />

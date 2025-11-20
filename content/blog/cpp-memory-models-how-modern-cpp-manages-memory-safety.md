@@ -7,12 +7,12 @@ pubDate: 'Nov 24 2024'
 keywords: ['c++', 'cpp', 'memory-management']
 ---
 
-C++ is a one of my favorite languages. It offers full control over memory and
-performance. But with great power comes great responsibility. Issues like memory
-leaks, dangling pointers, and race conditions is what caused the concerns over
-these vulnerabilities that recently led the
-[US government to discourage the use of C++](https://www.cisa.gov/resources-tools/resources/product-security-bad-practices)
-in favor of safer alternatives.
+C++ is a one of my favorite languages. It gives full control over memory and
+performance. But with this great power comes great responsibility. Issues like
+memory leaks, dangling pointers, and race conditions is what caused the concerns
+over these vulnerabilities to rise up to the point that recently led
+[the US government to discourage the use of C++](https://www.cisa.gov/resources-tools/resources/product-security-bad-practices)
+in favor of memory-safe alternatives.
 
 But I don't think these claims are justified. Modern C++ has come a long way.
 With tools like smart pointers, RAII, and thread-safe primitives introduced in
@@ -300,11 +300,12 @@ complete.
 
 ## Conclusion
 
-C++ gives great control and performance to the developers, but it requires great
-level of attention too in order to use avoid various memory related issues.
-Modern features like smart pointers and RAII make memory management easier but
-it is up to the developers to use them. Languages like Rust, Go offer their own
-takes. Rust focuses on safety, Go on simplicity. Both offer ways to do unsafe
-code as well. It is a matter of which is the default and how easy it is to step
-into unsafe territory. Ultimately it is the developers responsibility to choose
-the right tool for their project.
+C++ gives its users control and performance, but it requires great level of
+attention from users to avoid various memory related issues. Modern features
+like smart pointers and RAII make memory management easier but it is up to the
+developers to use them accordingly. Languages like Rust and Go offer their own
+takes on memory management. Rust focuses on safety and Go on simplicity. Both
+offer ways to do unsafe code as well if you want. It is a matter of which is the
+default and how easy it is to step into unsafe territory. Ultimately it is the
+developers responsibility to choose the right tool for their project, which is
+not all about memory safety either.
