@@ -24,7 +24,7 @@ const sortedPosts = posts.sort(
         <ul class="flex list-inside list-disc flex-col gap-2">
             {
                 sortedPosts.slice(0, 2).map((post) => (
-                    <li class="flex list-item space-x-1 sm:py-0">
+                    <li class="list-item space-x-1 sm:py-0">
                         <time
                             class="text-md hidden sm:inline"
                             datetime={post.data.pubDate.toISOString()}
@@ -58,7 +58,7 @@ const sortedPosts = posts.sort(
         <ul class="mt-10 list-inside list-disc">
             {
                 sortedPosts.slice(2).map((post) => (
-                    <li class="flex list-item space-x-1 sm:py-0">
+                    <li class="list-item space-x-1 sm:py-0">
                         <time
                             class="text-md hidden sm:inline"
                             datetime={post.data.pubDate.toISOString()}
